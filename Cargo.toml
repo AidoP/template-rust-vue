@@ -1,0 +1,14 @@
+[package]
+name = "template-rust-vue"
+version = "0.0.0"
+description = "An example project using Rust & Vue."
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/aidop/template-rust-vue/"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[dependencies]
+wasm-bindgen = "0.2.87"
