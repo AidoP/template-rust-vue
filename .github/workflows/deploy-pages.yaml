@@ -17,7 +17,6 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-      base_path: ${{ steps.deployment.outputs.base_path }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -25,10 +24,11 @@ jobs:
         run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
       - name: Install Dependencies
         run: npm install
-      - name: Build
-        run: npm run build
       - name: Setup Pages
+        id: setup
         uses: actions/configure-pages@v3
+      - name: Build
+        run: npm run build '${{ steps.setup.outputs.base_path }}'
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v1
         with:
