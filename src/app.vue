@@ -1,16 +1,11 @@
-<script setup>
-    import { greet } from './template_rust_vue/'
-    let name = undefined;
-    function say_hello(name) {
-        greet(name);
-    }
+<script setup lang="ts">
+import { ref } from 'vue';
+import { greet } from './template_rust_vue/';
+
+const name = ref();
 </script>
 
 <template>
     <input v-model="name" placeholder="Name">
-    <button @click="() => name && say_hello(name)">Say Hello</button>
+    <button @click="name && greet(name)">Say Hello</button>
 </template>
-
-<style scoped>
-
-</style>

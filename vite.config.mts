@@ -1,8 +1,8 @@
-import { defineConfig } from 'npm:vite@^4.3.9'
-import vue from 'npm:@vitejs/plugin-vue@^4.2.3'
+import { resolve } from 'path';
 
-import 'npm:vue@^3.3.4'
-import wasm from 'npm:vite-plugin-wasm@^3.2.2'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import wasm from 'vite-plugin-wasm';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -10,5 +10,14 @@ export default defineConfig({
     build: {
         target: 'esnext',
         outDir: 'target/dist'
+    },
+    worker: {
+        format: 'es',
+        plugins: [wasm()]
+    },
+    resolve: {
+        alias: {
+            '@': resolve('./src')
+        }
     }
-})
+});
