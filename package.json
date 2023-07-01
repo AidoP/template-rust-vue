@@ -7,8 +7,8 @@
     "scripts": {
         "wasm": "wasm-pack build --release --reference-types -d src/template_rust_vue/",
         "dev": "vite",
-        "build": "run() { base=\"$1\"; if [[ -z \"$base\" ]]; then base=/; fi; npm run check && vite build --base=\"$base\"; }; run",
-        "check": "cargo clippy -- -Dwarnings && cargo-fmt --check && npx eslint --ext=.ts,.js,.vue --max-warnings=0 . && vue-tsc",
+        "build": "run() { base=\"$1\"; if [ -z \"$base\" ]; then base=/; fi; npm run check && vite build --base=\"$base\"; }; run",
+        "check": "cargo clippy -- -Dwarnings && cargo-fmt --check && npm run wasm && npx eslint --ext=.ts,.js,.vue --max-warnings=0 . && vue-tsc",
         "preview": "vite preview"
     },
     "dependencies": {
